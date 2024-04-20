@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
 import MobileNav from './MobileNav';
+import { SignedIn, UserButton } from '@clerk/nextjs'
 
 const Navbar = () => {
   return (
@@ -14,11 +15,13 @@ const Navbar = () => {
           alt="callify_icon"
           className='max-sm:size-10'
         />
-        <p className="font-extrabold text-white text-[26px] max-sm:hidden">Callify</p>
+        <p className="font-extrabold text-white text-[26px] max-sm:hidden uppercase">Callify</p>
       </Link>
 
       <div className="flex-between gap-5">
-        {/* Clerk - User Management */}
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
 
         <MobileNav />
       </div>
